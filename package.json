@@ -116,8 +116,10 @@
     "onlyBuiltDependencies": [
       "prisma",
       "@prisma/client",
+      "@prisma/engines",
       "sharp",
-      "unrs-resolver"
+      "unrs-resolver",
+      "msw"
     ]
   }
 }
