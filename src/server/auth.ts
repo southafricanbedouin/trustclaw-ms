@@ -50,13 +50,6 @@ export const auth = betterAuth({
     ...(process.env.VERCEL_URL ? [`https://${process.env.VERCEL_URL}`] : []),
   ],
   database: prismaAdapter(db, { provider: "postgresql" }),
-  emailAndPassword: {
-    enabled: true,
-    requireEmailVerification: false,
-  },
-  emailVerification: {
-    sendOnSignUp: false,
-  },
   plugins: [username(), nextCookies()],
   session: {
     expiresIn: 30 * 24 * 60 * 60,
