@@ -50,10 +50,10 @@ export function LoginPage({ firstTime = false }: LoginPageProps) {
     e.preventDefault();
     setPending(true);
     try {
-      const result = await authClient.signUp.email({
-        email: regEmail,
-        password: regPassword,
+      const result = await authClient.signUp.username({
         username: regUsername,
+        password: regPassword,
+        email: regEmail,
         name: regName,
       });
       if (result.error) {
