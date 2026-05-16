@@ -28,9 +28,14 @@ export const env = createEnv({
     // /api/cron/* endpoints. Vercel auto-injects this when crons are configured
     // in vercel.json; the trustclaw deploy CLI also generates one on first deploy.
     CRON_SECRET: z.string(),
+
+    // Supabase (optional)
+    SUPABASE_SERVICE_ROLE_KEY: z.string().optional(),
   },
   client: {
     NEXT_PUBLIC_APP_URL: z.string().url(),
+    NEXT_PUBLIC_SUPABASE_URL: z.string().url().optional(),
+    NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: z.string().optional(),
   },
   runtimeEnv: {
     // Server
@@ -59,6 +64,10 @@ export const env = createEnv({
             : process.env.VERCEL_URL
               ? `https://${process.env.VERCEL_URL}`
               : undefined),
+    NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
+    NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY:
+      process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY,
+    SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY,
   },
   // SKIP_ENV_VALIDATION is for local lint/typecheck without a full .env.
   // Never honour it in production — security-critical secrets like
