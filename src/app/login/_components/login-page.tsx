@@ -50,11 +50,11 @@ export function LoginPage({ firstTime = false }: LoginPageProps) {
     e.preventDefault();
     setPending(true);
     try {
-      const result = await authClient.signUp.username({
-        username: regUsername,
-        password: regPassword,
+      const result = await authClient.signUp.email({
         email: regEmail,
+        password: regPassword,
         name: regName,
+        username: regUsername,
       });
       if (result.error) {
         showErrorToast(result.error.message ?? "Failed to create account");
